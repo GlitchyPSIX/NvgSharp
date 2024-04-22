@@ -109,7 +109,8 @@ namespace NvgSharp
 				_lastTextTexture = null;
 			}
 
-			public void Text(SpriteFontBase font, TextSource text, float x, float y, float layerDepth, float characterSpacing, float lineSpacing)
+			public void Text(SpriteFontBase font, TextSource text, float x, float y, float layerDepth, float characterSpacing,
+                float lineSpacing, Vector2 scale)
 			{
 				if (text.IsNull)
 				{
@@ -121,19 +122,20 @@ namespace NvgSharp
 				if (text.StringText != null)
 				{
 					font.DrawText(this, text.StringText, new Vector2(x, y), Color.White,
-						layerDepth: layerDepth, characterSpacing: characterSpacing, lineSpacing: lineSpacing);
+						layerDepth: layerDepth, characterSpacing: characterSpacing, lineSpacing: lineSpacing, scale: scale);
 				}
 				else
 				{
 					font.DrawText(this, text.StringBuilderText, new Vector2(x, y), Color.White,
-						layerDepth: layerDepth, characterSpacing: characterSpacing, lineSpacing: lineSpacing);
+						layerDepth: layerDepth, characterSpacing: characterSpacing, lineSpacing: lineSpacing,
+                        scale: scale);
 				}
 
 				FlushText();
 			}
 		}
 		private static void Text(this NvgContext context, SpriteFontBase font, TextSource text, float x, float y,
-			float layerDepth, float characterSpacing, float lineSpacing)
+			float layerDepth, float characterSpacing, float lineSpacing, Vector2 scale)
 		{
 			TextRenderer textRenderer;
 			if (context._textRenderer == null)
@@ -144,15 +146,15 @@ namespace NvgSharp
 				textRenderer = (TextRenderer)context._textRenderer;
 			}
 
-			textRenderer.Text(font, text, x, y, layerDepth, characterSpacing, lineSpacing);
+			textRenderer.Text(font, text, x, y, layerDepth, characterSpacing, lineSpacing, scale);
 		}
 
-		public static void Text(this NvgContext context, SpriteFontBase font, string text, float x, float y,
-			float layerDepth = 0.0f, float characterSpacing = 0.0f, float lineSpacing = 0.0f) =>
-			Text(context, font, new TextSource(text), x, y, layerDepth, characterSpacing, lineSpacing);
+		public static void Text(this NvgContext context, SpriteFontBase font, string text, float x, float y, Vector2 scale,
+            float layerDepth = 0.0f, float characterSpacing = 0.0f, float lineSpacing = 0.0f) =>
+			Text(context, font, new TextSource(text), x, y, layerDepth, characterSpacing, lineSpacing, scale);
 
-		public static void Text(this NvgContext context, SpriteFontBase font, StringBuilder text, float x, float y,
-			float layerDepth = 0.0f, float characterSpacing = 0.0f, float lineSpacing = 0.0f) =>
-			Text(context, font, new TextSource(text), x, y, layerDepth, characterSpacing, lineSpacing);
+		public static void Text(this NvgContext context, SpriteFontBase font, StringBuilder text, float x, float y, Vector2 scale,
+            float layerDepth = 0.0f, float characterSpacing = 0.0f, float lineSpacing = 0.0f) =>
+			Text(context, font, new TextSource(text), x, y, layerDepth, characterSpacing, lineSpacing, scale);
 	}
 }

@@ -5,6 +5,7 @@ using FontStashSharp;
 #if MONOGAME || FNA
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Vector2 = Microsoft.Xna.Framework.Vector2;
 #elif STRIDE
 using Stride.Core.Mathematics;
 #else
@@ -111,10 +112,10 @@ namespace NvgSharp.Samples
 			vg.Stroke();
 
 			vg.FillColor(Utility.FromRGBA(0, 0, 0, 128));
-			vg.TextAligned(fontBold18, title, x + w / 2, y + 16 + 1, TextHorizontalAlignment.Center, TextVerticalAlignment.Center);
+			vg.TextAligned(fontBold18, title, x + w / 2, y + 16 + 1, Vector2.One, TextHorizontalAlignment.Center, TextVerticalAlignment.Center);
 
 			vg.FillColor(Utility.FromRGBA(220, 220, 220, 160));
-			vg.TextAligned(fontBold18, title, x + w / 2, y + 16, TextHorizontalAlignment.Center, TextVerticalAlignment.Center);
+			vg.TextAligned(fontBold18, title, x + w / 2, y + 16, Vector2.One, TextHorizontalAlignment.Center, TextVerticalAlignment.Center);
 
 			vg.RestoreState();
 		}
@@ -134,13 +135,13 @@ namespace NvgSharp.Samples
 			var fontIcons = fontSystemIcons.GetFont((int)(h * 1.3f));
 
 			vg.FillColor(Utility.FromRGBA(255, 255, 255, 64));
-			vg.TextAligned(fontIcons, ICON_SEARCH, x + h * 0.55f, y + h * 0.55f, TextHorizontalAlignment.Center, TextVerticalAlignment.Center);
+			vg.TextAligned(fontIcons, ICON_SEARCH, x + h * 0.55f, y + h * 0.55f, Vector2.One, TextHorizontalAlignment.Center, TextVerticalAlignment.Center);
 
 			vg.FillColor(Utility.FromRGBA(255, 255, 255, 32));
-			vg.TextAligned(fontSans20, text, x + h * 1.05f, y + h * 0.5f, TextHorizontalAlignment.Left, TextVerticalAlignment.Center);
+			vg.TextAligned(fontSans20, text, x + h * 1.05f, y + h * 0.5f, Vector2.One, TextHorizontalAlignment.Left, TextVerticalAlignment.Center);
 
 			vg.FillColor(Utility.FromRGBA(255, 255, 255, 32));
-			vg.TextAligned(fontIcons, ICON_CIRCLED_CROSS, x + w - h * 0.55f, y + h * 0.55f, TextHorizontalAlignment.Center, TextVerticalAlignment.Center);
+			vg.TextAligned(fontIcons, ICON_CIRCLED_CROSS, x + w - h * 0.55f, y + h * 0.55f, Vector2.One, TextHorizontalAlignment.Center, TextVerticalAlignment.Center);
 		}
 
 		public void drawDropDown(NvgContext vg, string text, float x, float y, float w, float h)
@@ -160,17 +161,17 @@ namespace NvgSharp.Samples
 			vg.Stroke();
 
 			vg.FillColor(Utility.FromRGBA(255, 255, 255, 160));
-			vg.TextAligned(fontSans20, text, x + h * 0.3f, y + h * 0.5f, TextHorizontalAlignment.Left, TextVerticalAlignment.Center);
+			vg.TextAligned(fontSans20, text, x + h * 0.3f, y + h * 0.5f, Vector2.One, TextHorizontalAlignment.Left, TextVerticalAlignment.Center);
 
 			var fontIcons = fontSystemIcons.GetFont((int)(h * 1.3f));
 			vg.FillColor(Utility.FromRGBA(255, 255, 255, 64));
-			vg.TextAligned(fontIcons, ICON_CHEVRON_RIGHT, x + w - h * 0.5f, y + h * 0.5f, TextHorizontalAlignment.Center, TextVerticalAlignment.Center);
+			vg.TextAligned(fontIcons, ICON_CHEVRON_RIGHT, x + w - h * 0.5f, y + h * 0.5f, Vector2.One, TextHorizontalAlignment.Center, TextVerticalAlignment.Center);
 		}
 
 		public void drawLabel(NvgContext vg, string text, float x, float y, float w, float h)
 		{
 			vg.FillColor(Utility.FromRGBA(255, 255, 255, 128));
-			vg.TextAligned(fontSans18, text, x, y + h * 0.5f, TextHorizontalAlignment.Left, TextVerticalAlignment.Center);
+			vg.TextAligned(fontSans18, text, x, y + h * 0.5f, Vector2.One, TextHorizontalAlignment.Left, TextVerticalAlignment.Center);
 		}
 
 		public static void drawEditBoxBase(NvgContext vg, float x, float y, float w, float h)
@@ -194,7 +195,7 @@ namespace NvgSharp.Samples
 			drawEditBoxBase(vg, x, y, w, h);
 
 			vg.FillColor(Utility.FromRGBA(255, 255, 255, 64));
-			vg.TextAligned(fontSans20, text, x + h * 0.3f, y + h * 0.5f, TextHorizontalAlignment.Left, TextVerticalAlignment.Center);
+			vg.TextAligned(fontSans20, text, x + h * 0.3f, y + h * 0.5f, Vector2.One, TextHorizontalAlignment.Left, TextVerticalAlignment.Center);
 		}
 
 		public void drawEditBoxNum(NvgContext vg, string text, string units, float x, float y, float w, float h)
@@ -204,10 +205,10 @@ namespace NvgSharp.Samples
 			var sz = fontSans18.MeasureString(units);
 
 			vg.FillColor(Utility.FromRGBA(255, 255, 255, 64));
-			vg.TextAligned(fontSans18, units, x + w - h * 0.3f, y + h * 0.5f, TextHorizontalAlignment.Right, TextVerticalAlignment.Center);
+			vg.TextAligned(fontSans18, units, x + w - h * 0.3f, y + h * 0.5f, Vector2.One, TextHorizontalAlignment.Right, TextVerticalAlignment.Center);
 
 			vg.FillColor(Utility.FromRGBA(255, 255, 255, 128));
-			vg.TextAligned(fontSans20, text, x + w - sz.X - h * 0.5f, y + h * 0.5f, TextHorizontalAlignment.Right, TextVerticalAlignment.Center);
+			vg.TextAligned(fontSans20, text, x + w - sz.X - h * 0.5f, y + h * 0.5f, Vector2.One, TextHorizontalAlignment.Right, TextVerticalAlignment.Center);
 		}
 
 		public void drawCheckBox(NvgContext vg, string text, float x, float y, float w, float h)
@@ -215,7 +216,7 @@ namespace NvgSharp.Samples
 			Paint bg;
 
 			vg.FillColor(Utility.FromRGBA(255, 255, 255, 160));
-			vg.TextAligned(fontSans18, text, x + 28, y + h * 0.5f, TextHorizontalAlignment.Left, TextVerticalAlignment.Center);
+			vg.TextAligned(fontSans18, text, x + 28, y + h * 0.5f, Vector2.One, TextHorizontalAlignment.Left, TextVerticalAlignment.Center);
 
 			bg = vg.BoxGradient(x + 1, y + (int)(h * 0.5f) - 9 + 1, 18, 18, 3, 3, Utility.FromRGBA(0, 0, 0, 32), Utility.FromRGBA(0, 0, 0, 92));
 			vg.BeginPath();
@@ -225,7 +226,7 @@ namespace NvgSharp.Samples
 
 			var fontIcons = fontSystemIcons.GetFont(40);
 			vg.FillColor(Utility.FromRGBA(255, 255, 255, 128));
-			vg.TextAligned(fontIcons, ICON_CHECK, x + 9 + 2, y + h * 0.5f, TextHorizontalAlignment.Center, TextVerticalAlignment.Center);
+			vg.TextAligned(fontIcons, ICON_CHECK, x + 9 + 2, y + h * 0.5f, Vector2.One, TextHorizontalAlignment.Center, TextVerticalAlignment.Center);
 		}
 
 		public void drawButton(NvgContext vg, string preicon, string text, float x, float y, float w, float h, Color col)
@@ -261,13 +262,13 @@ namespace NvgSharp.Samples
 				iw += h * 0.15f;
 
 				vg.FillColor(Utility.FromRGBA(255, 255, 255, 96));
-				vg.TextAligned(fontIcons, preicon, x + w * 0.5f - tw * 0.5f - iw * 0.75f, y + h * 0.5f, TextHorizontalAlignment.Left, TextVerticalAlignment.Center);
+				vg.TextAligned(fontIcons, preicon, x + w * 0.5f - tw * 0.5f - iw * 0.75f, y + h * 0.5f, Vector2.One, TextHorizontalAlignment.Left, TextVerticalAlignment.Center);
 			}
 
 			vg.FillColor(Utility.FromRGBA(0, 0, 0, 160));
-			vg.TextAligned(fontBold20, text, x + w * 0.5f - tw * 0.5f + iw * 0.25f, y + h * 0.5f - 1, TextHorizontalAlignment.Left, TextVerticalAlignment.Center);
+			vg.TextAligned(fontBold20, text, x + w * 0.5f - tw * 0.5f + iw * 0.25f, y + h * 0.5f - 1, Vector2.One, TextHorizontalAlignment.Left, TextVerticalAlignment.Center);
 			vg.FillColor(Utility.FromRGBA(255, 255, 255, 160));
-			vg.TextAligned(fontBold20, text, x + w * 0.5f - tw * 0.5f + iw * 0.25f, y + h * 0.5f, TextHorizontalAlignment.Left, TextVerticalAlignment.Center);
+			vg.TextAligned(fontBold20, text, x + w * 0.5f - tw * 0.5f + iw * 0.25f, y + h * 0.5f, Vector2.One, TextHorizontalAlignment.Left, TextVerticalAlignment.Center);
 		}
 
 		public static void drawSlider(NvgContext vg, float pos, float x, float y, float w, float h)
