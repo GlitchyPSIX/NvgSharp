@@ -115,9 +115,9 @@ namespace NvgSharp.Samples
 			vg.TextAligned(fontBold18, title, x + w / 2, y + 16 + 1, Vector2.One, TextHorizontalAlignment.Center, TextVerticalAlignment.Center);
 
 			vg.FillColor(Utility.FromRGBA(220, 220, 220, 160));
-			vg.TextAligned(fontBold18, title, x + w / 2, y + 16, Vector2.One, TextHorizontalAlignment.Center, TextVerticalAlignment.Center);
+			vg.TextAligned(fontBold18, title, x + w / 2, y + 16, Vector2.One, TextHorizontalAlignment.Center, TextVerticalAlignment.Center, effect: FontSystemEffect.Stroked, effectAmount: 2);
 
-			vg.RestoreState();
+            vg.RestoreState();
 		}
 
 		public void drawSearchBox(NvgContext vg, string text, float x, float y, float w, float h)

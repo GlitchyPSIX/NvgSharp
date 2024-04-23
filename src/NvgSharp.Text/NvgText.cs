@@ -110,7 +110,7 @@ namespace NvgSharp
 			}
 
 			public void Text(SpriteFontBase font, TextSource text, float x, float y, float layerDepth, float characterSpacing,
-                float lineSpacing, Vector2 scale)
+                float lineSpacing, Vector2 scale, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0)
 			{
 				if (text.IsNull)
 				{
@@ -122,20 +122,22 @@ namespace NvgSharp
 				if (text.StringText != null)
 				{
 					font.DrawText(this, text.StringText, new Vector2(x, y), Color.White,
-						layerDepth: layerDepth, characterSpacing: characterSpacing, lineSpacing: lineSpacing, scale: scale);
+						layerDepth: layerDepth, characterSpacing: characterSpacing, lineSpacing: lineSpacing, scale: scale,
+                        effect: effect, effectAmount: effectAmount);
 				}
 				else
 				{
 					font.DrawText(this, text.StringBuilderText, new Vector2(x, y), Color.White,
 						layerDepth: layerDepth, characterSpacing: characterSpacing, lineSpacing: lineSpacing,
-                        scale: scale);
+                        scale: scale, effect: effect, effectAmount: effectAmount);
 				}
 
 				FlushText();
 			}
 		}
 		private static void Text(this NvgContext context, SpriteFontBase font, TextSource text, float x, float y,
-			float layerDepth, float characterSpacing, float lineSpacing, Vector2 scale)
+			float layerDepth, float characterSpacing, float lineSpacing, Vector2 scale,
+            FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0)
 		{
 			TextRenderer textRenderer;
 			if (context._textRenderer == null)
@@ -146,15 +148,17 @@ namespace NvgSharp
 				textRenderer = (TextRenderer)context._textRenderer;
 			}
 
-			textRenderer.Text(font, text, x, y, layerDepth, characterSpacing, lineSpacing, scale);
+			textRenderer.Text(font, text, x, y, layerDepth, characterSpacing, lineSpacing, scale, effect, effectAmount);
 		}
 
 		public static void Text(this NvgContext context, SpriteFontBase font, string text, float x, float y, Vector2 scale,
-            float layerDepth = 0.0f, float characterSpacing = 0.0f, float lineSpacing = 0.0f) =>
-			Text(context, font, new TextSource(text), x, y, layerDepth, characterSpacing, lineSpacing, scale);
+            float layerDepth = 0.0f, float characterSpacing = 0.0f, float lineSpacing = 0.0f,
+            FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0) =>
+			Text(context, font, new TextSource(text), x, y, layerDepth, characterSpacing, lineSpacing, scale, effect, effectAmount);
 
 		public static void Text(this NvgContext context, SpriteFontBase font, StringBuilder text, float x, float y, Vector2 scale,
-            float layerDepth = 0.0f, float characterSpacing = 0.0f, float lineSpacing = 0.0f) =>
-			Text(context, font, new TextSource(text), x, y, layerDepth, characterSpacing, lineSpacing, scale);
+            float layerDepth = 0.0f, float characterSpacing = 0.0f, float lineSpacing = 0.0f,
+            FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0) =>
+			Text(context, font, new TextSource(text), x, y, layerDepth, characterSpacing, lineSpacing, scale, effect, effectAmount);
 	}
 }
