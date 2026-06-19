@@ -1,6 +1,15 @@
 ﻿using FontStashSharp;
 using System.Text;
-using Microsoft.Xna.Framework;
+
+#if MONOGAME || FNA
+using Vector2 = Microsoft.Xna.Framework.Vector2;
+
+#elif STRIDE
+using Stride.Core.Mathematics;
+
+#else 
+using Vector2 = System.Numerics.Vector2;
+#endif
 
 namespace NvgSharp
 {

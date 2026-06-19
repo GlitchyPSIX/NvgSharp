@@ -7,6 +7,7 @@ using Stride.Core.Mathematics;
 #else
 using System.Drawing;
 using Texture2D = System.Object;
+using Vector2 = System.Numerics.Vector2;
 #endif
 
 namespace NvgSharp.Samples

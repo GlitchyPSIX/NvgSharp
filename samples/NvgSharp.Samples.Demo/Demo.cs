@@ -14,6 +14,7 @@ using Stride.Core.Mathematics;
 using StbImageSharp;
 using System.Drawing;
 using Texture2D = NvgSharp.Samples.Texture;
+using Vector2 = System.Numerics.Vector2;
 #endif
 
 namespace NvgSharp.Samples {
@@ -29,7 +30,7 @@ namespace NvgSharp.Samples {
         SpriteFontBase fontSans18, fontSans20, fontBold18, fontBold20;
         Texture2D[] images = new Texture2D[12];
 
-        private RichTextLayout rtLayout = new() {
+        private RichTextLayout rtLayout = new RichTextLayout() {
             IgnoreColorCommand = false
         };
 
