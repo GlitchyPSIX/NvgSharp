@@ -49,11 +49,13 @@ namespace NvgSharp.Samples
 
 		public Demo(NvgContext vg)
 		{
-			for (var i = 0; i < images.Length; i++) {
+			for (var i = 0; i < images.Length; i++)
+			{
 				var path = "Assets/images/image" + (i + 1).ToString() + ".jpg";
 
 #if MONOGAME || FNA || STRIDE
-				using (var stream = File.OpenRead(path)) {
+				using (var stream = File.OpenRead(path))
+				{
 					images[i] = Texture2D.FromStream(vg.GraphicsDevice, stream);
 				}
 #else
@@ -108,8 +110,7 @@ namespace NvgSharp.Samples
 			vg.Fill();
 
 			// Header
-			headerPaint = vg.LinearGradient(x, y, x, y + 15, Utility.FromRGBA(255, 255, 255, 8),
-				Utility.FromRGBA(0, 0, 0, 16));
+			headerPaint = vg.LinearGradient(x, y, x, y + 15, Utility.FromRGBA(255, 255, 255, 8),Utility.FromRGBA(0, 0, 0, 16));
 			vg.BeginPath();
 			vg.RoundedRect(x + 1, y + 1, w - 2, 30, cornerRadius - 1);
 			vg.FillPaint(headerPaint);
@@ -121,12 +122,10 @@ namespace NvgSharp.Samples
 			vg.Stroke();
 
 			vg.FillColor(Utility.FromRGBA(0, 0, 0, 128));
-			vg.TextAligned(fontBold18, title, x + w / 2, y + 16 + 1, Vector2.One, TextHorizontalAlignment.Center,
-				TextVerticalAlignment.Center);
+			vg.TextAligned(fontBold18, title, x + w / 2, y + 16 + 1, Vector2.One, TextHorizontalAlignment.Center,TextVerticalAlignment.Center);
 
 			vg.FillColor(Utility.FromRGBA(220, 220, 220, 160));
-			vg.TextAligned(fontBold18, title, x + w / 2, y + 16, Vector2.One, TextHorizontalAlignment.Center,
-				TextVerticalAlignment.Center, effect: FontSystemEffect.Stroked, effectAmount: 2);
+			vg.TextAligned(fontBold18, title, x + w / 2, y + 16, Vector2.One, TextHorizontalAlignment.Center, TextVerticalAlignment.Center, effect: FontSystemEffect.Stroked, effectAmount: 2);
 
 			vg.RestoreState();
 		}
@@ -144,19 +143,16 @@ namespace NvgSharp.Samples
 			vg.FillPaint(bg);
 			vg.Fill();
 
-			var fontIcons = fontSystemIcons.GetFont((int) (h * 1.3f));
+			var fontIcons = fontSystemIcons.GetFont((int)(h * 1.3f));
 
 			vg.FillColor(Utility.FromRGBA(255, 255, 255, 64));
-			vg.TextAligned(fontIcons, ICON_SEARCH, x + h * 0.55f, y + h * 0.55f, Vector2.One,
-				TextHorizontalAlignment.Center, TextVerticalAlignment.Center);
+			vg.TextAligned(fontIcons, ICON_SEARCH, x + h * 0.55f, y + h * 0.55f, Vector2.One ,TextHorizontalAlignment.Center, TextVerticalAlignment.Center);
 
 			vg.FillColor(Utility.FromRGBA(255, 255, 255, 32));
-			vg.TextAligned(fontSans20, text, x + h * 1.05f, y + h * 0.5f, Vector2.One, TextHorizontalAlignment.Left,
-				TextVerticalAlignment.Center);
+			vg.TextAligned(fontSans20, text, x + h * 1.05f, y + h * 0.5f, Vector2.One, TextHorizontalAlignment.Left, TextVerticalAlignment.Center);
 
 			vg.FillColor(Utility.FromRGBA(255, 255, 255, 32));
-			vg.TextAligned(fontIcons, ICON_CIRCLED_CROSS, x + w - h * 0.55f, y + h * 0.55f, Vector2.One,
-				TextHorizontalAlignment.Center, TextVerticalAlignment.Center);
+			vg.TextAligned(fontIcons, ICON_CIRCLED_CROSS, x + w - h * 0.55f, y + h * 0.55f, Vector2.One, TextHorizontalAlignment.Center, TextVerticalAlignment.Center);
 		}
 
 		public void drawDropDown(NvgContext vg, string text, float x, float y, float w, float h)
@@ -179,7 +175,7 @@ namespace NvgSharp.Samples
 			vg.TextAligned(fontSans20, text, x + h * 0.3f, y + h * 0.5f, Vector2.One, TextHorizontalAlignment.Left,
 				TextVerticalAlignment.Center);
 
-			var fontIcons = fontSystemIcons.GetFont((int) (h * 1.3f));
+			var fontIcons = fontSystemIcons.GetFont((int)(h * 1.3f));
 			vg.FillColor(Utility.FromRGBA(255, 255, 255, 64));
 			vg.TextAligned(fontIcons, ICON_CHEVRON_RIGHT, x + w - h * 0.5f, y + h * 0.5f, Vector2.One,
 				TextHorizontalAlignment.Center, TextVerticalAlignment.Center);
@@ -241,10 +237,10 @@ namespace NvgSharp.Samples
 			vg.TextAligned(fontSans18, text, x + 28, y + h * 0.5f, Vector2.One, TextHorizontalAlignment.Left,
 				TextVerticalAlignment.Center);
 
-			bg = vg.BoxGradient(x + 1, y + (int) (h * 0.5f) - 9 + 1, 18, 18, 3, 3, Utility.FromRGBA(0, 0, 0, 32),
+			bg = vg.BoxGradient(x + 1, y + (int)(h * 0.5f) - 9 + 1, 18, 18, 3, 3, Utility.FromRGBA(0, 0, 0, 32),
 				Utility.FromRGBA(0, 0, 0, 92));
 			vg.BeginPath();
-			vg.RoundedRect(x + 1, y + (int) (h * 0.5f) - 9, 18, 18, 3);
+			vg.RoundedRect(x + 1, y + (int)(h * 0.5f) - 9, 18, 18, 3);
 			vg.FillPaint(bg);
 			vg.Fill();
 
@@ -262,11 +258,12 @@ namespace NvgSharp.Samples
 			float tw = 0, iw = 0;
 
 			bg = vg.LinearGradient(x, y, x, y + h,
-				Utility.FromRGBA(255, 255, 255, isBlack(col) ? (byte) 16 : (byte) 32),
-				Utility.FromRGBA(0, 0, 0, isBlack(col) ? (byte) 16 : (byte) 32));
+				Utility.FromRGBA(255, 255, 255, isBlack(col) ? (byte)16 : (byte)32),
+				Utility.FromRGBA(0, 0, 0, isBlack(col) ? (byte)16 : (byte)32));
 			vg.BeginPath();
 			vg.RoundedRect(x + 1, y + 1, w - 2, h - 2, cornerRadius - 1);
-			if (!isBlack(col)) {
+			if (!isBlack(col))
+			{
 				vg.FillColor(col);
 				vg.Fill();
 			}
@@ -281,8 +278,9 @@ namespace NvgSharp.Samples
 
 			var sz = fontBold20.MeasureString(text);
 			tw = sz.X;
-			if (!string.IsNullOrEmpty(preicon)) {
-				var fontIcons = fontSystemIcons.GetFont((int) (h * 1.3f));
+			if (!string.IsNullOrEmpty(preicon))
+			{
+				var fontIcons = fontSystemIcons.GetFont((int)(h * 1.3f));
 				sz = fontIcons.MeasureString(preicon);
 				iw = sz.X;
 				iw += h * 0.15f;
@@ -303,8 +301,8 @@ namespace NvgSharp.Samples
 		public static void drawSlider(NvgContext vg, float pos, float x, float y, float w, float h)
 		{
 			Paint bg, knob;
-			float cy = y + (int) (h * 0.5f);
-			float kr = (int) (h * 0.25f);
+			float cy = y + (int)(h * 0.5f);
+			float kr = (int)(h * 0.25f);
 
 			vg.SaveState();
 			//	ClearState(vg);
@@ -318,11 +316,11 @@ namespace NvgSharp.Samples
 			vg.Fill();
 
 			// Knob Shadow
-			bg = vg.RadialGradient(x + (int) (pos * w), cy + 1, kr - 3, kr + 3, Utility.FromRGBA(0, 0, 0, 64),
+			bg = vg.RadialGradient(x + (int)(pos * w), cy + 1, kr - 3, kr + 3, Utility.FromRGBA(0, 0, 0, 64),
 				Utility.FromRGBA(0, 0, 0, 0));
 			vg.BeginPath();
-			vg.Rect(x + (int) (pos * w) - kr - 5, cy - kr - 5, kr * 2 + 5 + 5, kr * 2 + 5 + 5 + 3);
-			vg.Circle(x + (int) (pos * w), cy, kr);
+			vg.Rect(x + (int)(pos * w) - kr - 5, cy - kr - 5, kr * 2 + 5 + 5, kr * 2 + 5 + 5 + 3);
+			vg.Circle(x + (int)(pos * w), cy, kr);
 			vg.PathWinding(Solidity.Hole);
 			vg.FillPaint(bg);
 			vg.Fill();
@@ -331,14 +329,14 @@ namespace NvgSharp.Samples
 			knob = vg.LinearGradient(x, cy - kr, x, cy + kr, Utility.FromRGBA(255, 255, 255, 16),
 				Utility.FromRGBA(0, 0, 0, 16));
 			vg.BeginPath();
-			vg.Circle(x + (int) (pos * w), cy, kr - 1);
+			vg.Circle(x + (int)(pos * w), cy, kr - 1);
 			vg.FillColor(Utility.FromRGBA(40, 43, 48, 255));
 			vg.Fill();
 			vg.FillPaint(knob);
 			vg.Fill();
 
 			vg.BeginPath();
-			vg.Circle(x + (int) (pos * w), cy, kr - 0.5f);
+			vg.Circle(x + (int)(pos * w), cy, kr - 0.5f);
 			vg.StrokeColor(Utility.FromRGBA(0, 0, 0, 92));
 			vg.Stroke();
 
@@ -363,7 +361,7 @@ namespace NvgSharp.Samples
 			float ry = y + ey;
 			float dx, dy, d;
 			float br = (ex < ey ? ex : ey) * 0.5f;
-			float blink = 1 - (float) (Math.Pow(Math.Sin(t * 0.5f), 200) * 0.8f);
+			float blink = 1 - (float)(Math.Pow(Math.Sin(t * 0.5f), 200) * 0.8f);
 
 			bg = vg.LinearGradient(x, y + h * 0.5f, x + w * 0.1f, y + h, Utility.FromRGBA(0, 0, 0, 32),
 				Utility.FromRGBA(0, 0, 0, 16));
@@ -383,8 +381,9 @@ namespace NvgSharp.Samples
 
 			dx = (mx - rx) / (ex * 10);
 			dy = (my - ry) / (ey * 10);
-			d = (float) Math.Sqrt(dx * dx + dy * dy);
-			if (d > 1.0f) {
+			d = (float)Math.Sqrt(dx * dx + dy * dy);
+			if (d > 1.0f)
+			{
 				dx /= d;
 				dy /= d;
 			}
@@ -398,8 +397,9 @@ namespace NvgSharp.Samples
 
 			dx = (mx - rx) / (ex * 10);
 			dy = (my - ry) / (ey * 10);
-			d = (float) Math.Sqrt(dx * dx + dy * dy);
-			if (d > 1.0f) {
+			d = (float)Math.Sqrt(dx * dx + dy * dy);
+			if (d > 1.0f)
+			{
 				dx /= d;
 				dy /= d;
 			}
@@ -434,14 +434,15 @@ namespace NvgSharp.Samples
 			float dx = w / 5.0f;
 			int i;
 
-			samples[0] = (1 + (float) Math.Sin(t * 1.2345f + (float) Math.Cos(t * 0.33457f) * 0.44f)) * 0.5f;
-			samples[1] = (1 + (float) Math.Sin(t * 0.68363f + (float) Math.Cos(t * 1.3f) * 1.55f)) * 0.5f;
-			samples[2] = (1 + (float) Math.Sin(t * 1.1642f + (float) Math.Cos(t * 0.33457) * 1.24f)) * 0.5f;
-			samples[3] = (1 + (float) Math.Sin(t * 0.56345f + (float) Math.Cos(t * 1.63f) * 0.14f)) * 0.5f;
-			samples[4] = (1 + (float) Math.Sin(t * 1.6245f + (float) Math.Cos(t * 0.254f) * 0.3f)) * 0.5f;
-			samples[5] = (1 + (float) Math.Sin(t * 0.345f + (float) Math.Cos(t * 0.03f) * 0.6f)) * 0.5f;
+			samples[0] = (1 + (float)Math.Sin(t * 1.2345f + (float)Math.Cos(t * 0.33457f) * 0.44f)) * 0.5f;
+			samples[1] = (1 + (float)Math.Sin(t * 0.68363f + (float)Math.Cos(t * 1.3f) * 1.55f)) * 0.5f;
+			samples[2] = (1 + (float)Math.Sin(t * 1.1642f + (float)Math.Cos(t * 0.33457) * 1.24f)) * 0.5f;
+			samples[3] = (1 + (float)Math.Sin(t * 0.56345f + (float)Math.Cos(t * 1.63f) * 0.14f)) * 0.5f;
+			samples[4] = (1 + (float)Math.Sin(t * 1.6245f + (float)Math.Cos(t * 0.254f) * 0.3f)) * 0.5f;
+			samples[5] = (1 + (float)Math.Sin(t * 0.345f + (float)Math.Cos(t * 0.03f) * 0.6f)) * 0.5f;
 
-			for (i = 0; i < 6; i++) {
+			for (i = 0; i < 6; i++)
+			{
 				sx[i] = x + i * dx;
 				sy[i] = y + h * samples[i] * 0.8f;
 			}
@@ -475,7 +476,8 @@ namespace NvgSharp.Samples
 			vg.Stroke();
 
 			// Graph sample pos
-			for (i = 0; i < 6; i++) {
+			for (i = 0; i < 6; i++)
+			{
 				bg = vg.RadialGradient(sx[i], sy[i] + 2, 3.0f, 8.0f, Utility.FromRGBA(0, 0, 0, 32),
 					Utility.FromRGBA(0, 0, 0, 0));
 				vg.BeginPath();
@@ -501,7 +503,7 @@ namespace NvgSharp.Samples
 		public static void drawSpinner(NvgContext vg, float cx, float cy, float r, float t)
 		{
 			float a0 = 0.0f + t * 6;
-			float a1 = (float) Math.PI + t * 6;
+			float a1 = (float)Math.PI + t * 6;
 			float r0 = r;
 			float r1 = r * 0.75f;
 			float ax, ay, bx, by;
@@ -513,10 +515,10 @@ namespace NvgSharp.Samples
 			vg.Arc(cx, cy, r0, a0, a1, Winding.ClockWise);
 			vg.Arc(cx, cy, r1, a1, a0, Winding.CounterClockWise);
 			vg.ClosePath();
-			ax = cx + (float) Math.Cos(a0) * (r0 + r1) * 0.5f;
-			ay = cy + (float) Math.Sin(a0) * (r0 + r1) * 0.5f;
-			bx = cx + (float) Math.Cos(a1) * (r0 + r1) * 0.5f;
-			by = cy + (float) Math.Sin(a1) * (r0 + r1) * 0.5f;
+			ax = cx + (float)Math.Cos(a0) * (r0 + r1) * 0.5f;
+			ay = cy + (float)Math.Sin(a0) * (r0 + r1) * 0.5f;
+			bx = cx + (float)Math.Cos(a1) * (r0 + r1) * 0.5f;
+			by = cy + (float)Math.Sin(a1) * (r0 + r1) * 0.5f;
 			paint = vg.LinearGradient(ax, ay, bx, by, Utility.FromRGBA(0, 0, 0, 0), Utility.FromRGBA(0, 0, 0, 128));
 			vg.FillPaint(paint);
 			vg.Fill();
@@ -535,8 +537,8 @@ namespace NvgSharp.Samples
 			int imgw, imgh;
 			float stackh = (images.Length / 2) * (thumb + 10) + 10;
 			int i;
-			float u = (1 + (float) Math.Cos(t * 0.5f)) * 0.5f;
-			float u2 = (1 - (float) Math.Cos(t * 0.2f)) * 0.5f;
+			float u = (1 + (float)Math.Cos(t * 0.5f)) * 0.5f;
+			float u2 = (1 - (float)Math.Cos(t * 0.2f)) * 0.5f;
 			float scrollh, dv;
 
 			vg.SaveState();
@@ -567,7 +569,8 @@ namespace NvgSharp.Samples
 
 			dv = 1.0f / (images.Length - 1);
 
-			for (i = 0; i < images.Length; i++) {
+			for (i = 0; i < images.Length; i++)
+			{
 				float tx, ty, v, a;
 				tx = x + 10;
 				ty = y + 10;
@@ -577,13 +580,15 @@ namespace NvgSharp.Samples
 				imgw = images[i].Width;
 				imgh = images[i].Height;
 
-				if (imgw < imgh) {
+				if (imgw < imgh)
+				{
 					iw = thumb;
 					ih = iw * imgh / imgw;
 					ix = 0;
 					iy = -(ih - thumb) * 0.5f;
 				}
-				else {
+				else
+				{
 					ih = thumb;
 					iw = ih * imgw / imgh;
 					ix = -(iw - thumb) * 0.5f;
@@ -596,7 +601,7 @@ namespace NvgSharp.Samples
 				if (a < 1.0f)
 					drawSpinner(vg, tx + thumb / 2, ty + thumb / 2, thumb * 0.25f, t);
 
-				imgPaint = vg.ImagePattern(tx + ix, ty + iy, iw, ih, 0.0f / 180.0f * (float) Math.PI, images[i], a);
+				imgPaint = vg.ImagePattern(tx + ix, ty + iy, iw, ih, 0.0f / 180.0f * (float)Math.PI, images[i], a);
 				vg.BeginPath();
 				vg.RoundedRect(tx, ty, thumb, thumb, 5);
 				vg.FillPaint(imgPaint);
@@ -660,7 +665,7 @@ namespace NvgSharp.Samples
 		{
 			int i;
 			float r0, r1, ax, ay, bx, by, cx, cy, aeps, r;
-			float hue = (float) Math.Sin(t * 0.12f);
+			float hue = (float)Math.Sin(t * 0.12f);
 			Paint paint;
 
 			vg.SaveState();
@@ -676,19 +681,20 @@ namespace NvgSharp.Samples
 			r0 = r1 - 20.0f;
 			aeps = 0.5f / r1; // half a pixel arc length in radians (2pi cancels out).
 
-			for (i = 0; i < 6; i++) {
-				float a0 = (float) i / 6.0f * (float) Math.PI * 2.0f - aeps;
-				float a1 = (float) (i + 1.0f) / 6.0f * (float) Math.PI * 2.0f + aeps;
+			for (i = 0; i < 6; i++)
+			{
+				float a0 = (float)i / 6.0f * (float)Math.PI * 2.0f - aeps;
+				float a1 = (float)(i + 1.0f) / 6.0f * (float)Math.PI * 2.0f + aeps;
 				vg.BeginPath();
 				vg.Arc(cx, cy, r0, a0, a1, Winding.ClockWise);
 				vg.Arc(cx, cy, r1, a1, a0, Winding.CounterClockWise);
 				vg.ClosePath();
-				ax = cx + (float) Math.Cos(a0) * (r0 + r1) * 0.5f;
-				ay = cy + (float) Math.Sin(a0) * (r0 + r1) * 0.5f;
-				bx = cx + (float) Math.Cos(a1) * (r0 + r1) * 0.5f;
-				by = cy + (float) Math.Sin(a1) * (r0 + r1) * 0.5f;
-				paint = vg.LinearGradient(ax, ay, bx, by, Utility.HSLA(a0 / ((float) Math.PI * 2), 1.0f, 0.55f, 255),
-					Utility.HSLA(a1 / ((float) Math.PI * 2), 1.0f, 0.55f, 255));
+				ax = cx + (float)Math.Cos(a0) * (r0 + r1) * 0.5f;
+				ay = cy + (float)Math.Sin(a0) * (r0 + r1) * 0.5f;
+				bx = cx + (float)Math.Cos(a1) * (r0 + r1) * 0.5f;
+				by = cy + (float)Math.Sin(a1) * (r0 + r1) * 0.5f;
+				paint = vg.LinearGradient(ax, ay, bx, by, Utility.HSLA(a0 / ((float)Math.PI * 2), 1.0f, 0.55f, 255),
+					Utility.HSLA(a1 / ((float)Math.PI * 2), 1.0f, 0.55f, 255));
 				vg.FillPaint(paint);
 				vg.Fill();
 			}
@@ -703,7 +709,7 @@ namespace NvgSharp.Samples
 			// Selector
 			vg.SaveState();
 			vg.Translate(cx, cy);
-			vg.Rotate(hue * (float) Math.PI * 2);
+			vg.Rotate(hue * (float)Math.PI * 2);
 
 			// Marker on
 			vg.StrokeWidth(2.0f);
@@ -723,10 +729,10 @@ namespace NvgSharp.Samples
 
 			// Center triangle
 			r = r0 - 6;
-			ax = (float) Math.Cos(120.0f / 180.0f * (float) Math.PI) * r;
-			ay = (float) Math.Sin(120.0f / 180.0f * (float) Math.PI) * r;
-			bx = (float) Math.Cos(-120.0f / 180.0f * (float) Math.PI) * r;
-			by = (float) Math.Sin(-120.0f / 180.0f * (float) Math.PI) * r;
+			ax = (float)Math.Cos(120.0f / 180.0f * (float)Math.PI) * r;
+			ay = (float)Math.Sin(120.0f / 180.0f * (float)Math.PI) * r;
+			bx = (float)Math.Cos(-120.0f / 180.0f * (float)Math.PI) * r;
+			by = (float)Math.Sin(-120.0f / 180.0f * (float)Math.PI) * r;
 			vg.BeginPath();
 			vg.MoveTo(r, 0);
 			vg.LineTo(ax, ay);
@@ -744,8 +750,8 @@ namespace NvgSharp.Samples
 			vg.Stroke();
 
 			// Select circle on triangle
-			ax = (float) Math.Cos(120.0f / 180.0f * (float) Math.PI) * r * 0.3f;
-			ay = (float) Math.Sin(120.0f / 180.0f * (float) Math.PI) * r * 0.4f;
+			ax = (float)Math.Cos(120.0f / 180.0f * (float)Math.PI) * r * 0.3f;
+			ay = (float)Math.Sin(120.0f / 180.0f * (float)Math.PI) * r * 0.4f;
 			vg.StrokeWidth(2.0f);
 			vg.BeginPath();
 			vg.Circle(ax, ay, 5);
@@ -775,17 +781,19 @@ namespace NvgSharp.Samples
 			LineCap[] caps = new LineCap[] {LineCap.Butt, LineCap.Round, LineCap.Square};
 
 			vg.SaveState();
-			pts[0] = -s * 0.25f + (float) Math.Cos(t * 0.3f) * s * 0.5f;
-			pts[1] = (float) Math.Sin(t * 0.3f) * s * 0.5f;
+			pts[0] = -s * 0.25f + (float)Math.Cos(t * 0.3f) * s * 0.5f;
+			pts[1] = (float)Math.Sin(t * 0.3f) * s * 0.5f;
 			pts[2] = -s * 0.25f;
 			pts[3] = 0;
 			pts[4] = s * 0.25f;
 			pts[5] = 0;
-			pts[6] = s * 0.25f + (float) Math.Cos(-t * 0.3f) * s * 0.5f;
-			pts[7] = (float) Math.Sin(-t * 0.3f) * s * 0.5f;
+			pts[6] = s * 0.25f + (float)Math.Cos(-t * 0.3f) * s * 0.5f;
+			pts[7] = (float)Math.Sin(-t * 0.3f) * s * 0.5f;
 
-			for (i = 0; i < 3; i++) {
-				for (j = 0; j < 3; j++) {
+			for (i = 0; i < 3; i++)
+			{
+				for (j = 0; j < 3; j++)
+				{
 					fx = x + s * 0.5f + (i * 3 + j) / 9.0f * w + pad;
 					fy = y - s * 0.5f + pad;
 
@@ -821,7 +829,8 @@ namespace NvgSharp.Samples
 		private static FontSystem LoadFont(string path)
 		{
 			var result = new FontSystem();
-			using (var stream = File.OpenRead(path)) {
+			using (var stream = File.OpenRead(path))
+			{
 				result.AddFont(stream);
 			}
 
@@ -836,7 +845,8 @@ namespace NvgSharp.Samples
 
 			vg.StrokeColor(Utility.FromRGBA(0, 0, 0, 255));
 
-			for (i = 0; i < 20; i++) {
+			for (i = 0; i < 20; i++)
+			{
 				float w = (i + 0.5f) * 0.1f;
 				vg.StrokeWidth(w);
 				vg.BeginPath();
@@ -868,7 +878,8 @@ namespace NvgSharp.Samples
 			vg.Fill();
 
 			vg.StrokeWidth(lineWidth);
-			for (i = 0; i < 3; i++) {
+			for (i = 0; i < 3; i++)
+			{
 				vg.LineCap(caps[i]);
 				vg.StrokeColor(Utility.FromRGBA(0, 0, 0, 255));
 				vg.BeginPath();
@@ -941,8 +952,9 @@ namespace NvgSharp.Samples
 			drawScissor(vg, 50, height - 80, t);
 
 			vg.SaveState();
-			if (blowup) {
-				vg.Rotate((float) Math.Sin(t * 0.3f) * 5.0f / 180.0f * (float) Math.PI);
+			if (blowup)
+			{
+				vg.Rotate((float)Math.Sin(t * 0.3f) * 5.0f / 180.0f * (float)Math.PI);
 				vg.Scale(2.0f, 2.0f);
 			}
 
